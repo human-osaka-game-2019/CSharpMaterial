@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyName>FizzBuzz1</AssemblyName>
+    <RootNamespace>FizzBuzz1</RootNamespace>
+  </PropertyGroup>
+
+</Project>
