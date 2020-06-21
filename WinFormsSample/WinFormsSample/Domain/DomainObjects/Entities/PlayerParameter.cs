@@ -36,10 +36,34 @@ namespace WinFormSample.Domain.DomainObjects.Entities {
 		public bool IsMale { get; set; }
 
 		/// <summary>
-		/// 初回プレイから使用可能かどうか。
+		/// 火属性への耐性があるかどうか。
 		/// </summary>
 		[DataMember]
-		public bool IsAvailableOnFirstPlay { get; set; }
+		public bool IsTolerantOfFire { get; set; }
+
+		/// <summary>
+		/// 氷属性への耐性があるかどうか。
+		/// </summary>
+		[DataMember]
+		public bool IsTolerantOfIce { get; set; }
+
+		/// <summary>
+		/// 風属性への耐性があるかどうか。
+		/// </summary>
+		[DataMember]
+		public bool IsTolerantOfWind { get; set; }
+
+		/// <summary>
+		/// 雷属性への耐性があるかどうか。
+		/// </summary>
+		[DataMember]
+		public bool IsTolerantOfThunder { get; set; }
+
+		///// <summary>
+		///// 能力のタイプ。
+		///// </summary>
+		//[DataMember]
+		//public PlayerParameterType ParameterType { get; set; }
 
 		/// <summary>
 		/// 能力のタイプ。

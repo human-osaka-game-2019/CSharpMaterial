@@ -46,9 +46,12 @@ namespace WinFormSample.Presentation {
 				var player = new PlayerParameter() {
 					Name = this.txtName.Text,
 					IsMale = this.rbtnMale.Checked,
-					IsAvailableOnFirstPlay = this.chkIsAvailableOnFirstPlay.Checked,
 					ParameterType = (PlayerParameter.PlayerParameterType)this.cmbParameterType.SelectedValue,
 
+					IsTolerantOfFire = this.chkIsTolerantOfFire.Checked,
+					IsTolerantOfIce = this.chkIsTolerantOfIce.Checked,
+					IsTolerantOfWind = this.chkIsTolerantOfWind.Checked,
+					IsTolerantOfThunder = this.chkIsTolerantOfThunder.Checked,
 					// 職業のGroupBoxの中に配置されているRadioButtonの中で選択状態のもののTagを取得
 					Job = (JobType)this.grbJob.Controls.OfType<RadioButton>().First(x => x.Checked).Tag
 				};
@@ -73,8 +76,10 @@ namespace WinFormSample.Presentation {
 				if (player != null) {
 					this.txtName.Text = player.Name;
 					(player.IsMale ? this.rbtnMale : this.rbtnFemale).Checked = true;
-					this.chkIsAvailableOnFirstPlay.Checked = player.IsAvailableOnFirstPlay;
-					this.cmbParameterType.SelectedValue = (int)player.ParameterType;
+					this.chkIsTolerantOfFire.Checked = player.IsTolerantOfFire;
+					this.chkIsTolerantOfIce.Checked = player.IsTolerantOfIce;
+					this.chkIsTolerantOfWind.Checked = player.IsTolerantOfWind;
+					this.chkIsTolerantOfThunder.Checked = player.IsTolerantOfThunder;
 
 					// 職業のGroupBoxの中に配置されているRadioButtonの中でTagが一致するものを選択状態にする
 					this.grbJob.Controls.OfType<RadioButton>().First(x => (JobType)x.Tag == player.Job).Checked = true;
