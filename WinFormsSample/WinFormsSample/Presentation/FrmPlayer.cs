@@ -46,15 +46,32 @@ namespace WinFormSample.Presentation {
 				var player = new PlayerParameter() {
 					Name = this.txtName.Text,
 					IsMale = this.rbtnMale.Checked,
-					ParameterType = (PlayerParameter.PlayerParameterType)this.cmbParameterType.SelectedValue,
-
 					IsTolerantOfFire = this.chkIsTolerantOfFire.Checked,
 					IsTolerantOfIce = this.chkIsTolerantOfIce.Checked,
 					IsTolerantOfWind = this.chkIsTolerantOfWind.Checked,
 					IsTolerantOfThunder = this.chkIsTolerantOfThunder.Checked,
+
+					// コンボボックスの選択項目を取得
+					// [表示文字をそのまま取得する場合]
+					ParameterType = this.cmbParameterType.SelectedItem.ToString()!,
+					// [選択されているものに対応するコードを取得してEnumに変換する場合]
+					//ParameterType = (PlayerParameter.PlayerParameterType)this.cmbParameterType.SelectedValue,
+
+					// ラジオボタンの選択項目を取得
+					// [LINQを使用して1行で行う場合]
 					// 職業のGroupBoxの中に配置されているRadioButtonの中で選択状態のもののTagを取得
-					Job = (JobType)this.grbJob.Controls.OfType<RadioButton>().First(x => x.Checked).Tag
+					//Job = (JobType)this.grbJob.Controls.OfType<RadioButton>().First(x => x.Checked).Tag
 				};
+
+				// ラジオボタンの選択項目を取得
+				// [if文で1つずつ確認していく場合]
+				if (this.rbtnKnight.Checked) {
+					player.Job = JobType.Knight;
+				} else if(this.rbtnWitch.Checked) {
+					player.Job = JobType.Witch;
+				} else {
+					player.Job = JobType.Ninja;
+				}
 
 				await this.service.SaveAsync(player, filePath);
 			}
@@ -81,6 +98,12 @@ namespace WinFormSample.Presentation {
 					this.chkIsTolerantOfWind.Checked = player.IsTolerantOfWind;
 					this.chkIsTolerantOfThunder.Checked = player.IsTolerantOfThunder;
 
+					// コンボボックスの選択項目を変更する
+					// [PlayerParameterクラスのプロパティの値をそのまま表示する場合]
+					this.cmbParameterType.SelectedItem = player.ParameterType;
+					// [Enumを数値に変換して紐付ける場合]
+					//this.cmbParameterType.SelectedValue = (int)player.ParameterType;
+
 					// 職業のGroupBoxの中に配置されているRadioButtonの中でTagが一致するものを選択状態にする
 					this.grbJob.Controls.OfType<RadioButton>().First(x => (JobType)x.Tag == player.Job).Checked = true;
 				}
@@ -102,12 +125,21 @@ namespace WinFormSample.Presentation {
 		/// </summary>
 		private void CreateParameterTypeDataSource() {
 			// PlayerParameterTypeをコンボボックス用に変換
-			var parameterList
-				= ((int[])Enum.GetValues(typeof(PlayerParameterType)))
-					.Select(value => new { value, name = ((PlayerParameterType)value).GetDisplayName() });
-			this.cmbParameterType.DataSource = parameterList.ToList();
-			this.cmbParameterType.ValueMember = "value";
-			this.cmbParameterType.DisplayMember = "name";
+			// [配列を設定する場合]
+			var playerParameterNames = new string[] {
+				PlayerParameterType.Power.GetDisplayName(),
+				PlayerParameterType.Hp.GetDisplayName(),
+				PlayerParameterType.Speed.GetDisplayName()
+			};
+			this.cmbParameterType.DataSource = playerParameterNames;
+
+			// [LINQを使ってEnumから配列を生成する場合]
+			//var parameterList
+			//	= ((int[])Enum.GetValues(typeof(PlayerParameterType)))
+			//		.Select(value => new { value, name = ((PlayerParameterType)value).GetDisplayName() });
+			//this.cmbParameterType.DataSource = parameterList.ToList();
+			//this.cmbParameterType.ValueMember = "value";
+			//this.cmbParameterType.DisplayMember = "name";
 		}
 
 		/// <summary>

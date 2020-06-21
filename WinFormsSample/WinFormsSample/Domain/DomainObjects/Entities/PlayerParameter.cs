@@ -26,7 +26,7 @@ namespace WinFormSample.Domain.DomainObjects.Entities {
 		/// 名前。
 		/// </summary>
 		[DataMember]
-		public string Name { get; set; } = null!;
+		public string Name { get; set; } = string.Empty;
 
 		/// <summary>
 		/// 性別。
@@ -69,7 +69,7 @@ namespace WinFormSample.Domain.DomainObjects.Entities {
 		/// 能力のタイプ。
 		/// </summary>
 		[DataMember]
-		public PlayerParameterType ParameterType { get; set; }
+		public string ParameterType { get; set; } = string.Empty;
 
 		/// <summary>
 		/// 職業。
