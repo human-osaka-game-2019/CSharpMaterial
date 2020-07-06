@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using WinFormSample.Domain.DomainObjects.Entities;
 
 namespace WinFormSample.Infrastructures {
 	/// <summary>
@@ -18,6 +19,21 @@ namespace WinFormSample.Infrastructures {
 
 		#region public methods
 		/// <summary>
+		/// プレイヤー情報をXMLファイルを読み込む。
+		/// </summary>
+		/// <param name="filePath">読み込むファイルパス</param>
+		/// <returns>読み込んだデータをPlayerParameter型のオブジェクトに変換したもの</returns>
+		public static PlayerParameter? ReadPlayerParameter(string filePath) {
+			PlayerParameter? ret;
+			var serializer = new XmlSerializer(typeof(PlayerParameter));
+			using (var reader = new StreamReader(filePath)) {
+				ret = serializer.Deserialize(reader) as PlayerParameter;
+			}
+
+			return ret;
+		}
+
+		/// <summary>
 		/// XMLファイルを読み込む。
 		/// </summary>
 		/// <typeparam name="T">読み込んだデータを格納する型</typeparam>
@@ -31,6 +47,20 @@ namespace WinFormSample.Infrastructures {
 			}
 
 			return ret;
+		}
+
+		/// <summary>
+		/// プレイヤー情報をXMLファイルに書き出す。
+		/// </summary>
+		/// <param name="target">出力対象のオブジェクト</param>
+		/// <param name="filePath">出力先ファイルパス</param>
+		public static void WritePlayerParameter(PlayerParameter target, string filePath) {
+			var serializer = new XmlSerializer(typeof(PlayerParameter));
+
+			using (var writer = new StreamWriter(filePath, false, Encoding.UTF8)) {
+				serializer.Serialize(writer, target);
+				writer.FlushAsync();
+			}
 		}
 
 		/// <summary>

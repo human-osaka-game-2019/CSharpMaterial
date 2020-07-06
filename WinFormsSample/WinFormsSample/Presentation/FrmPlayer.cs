@@ -73,7 +73,10 @@ namespace WinFormSample.Presentation {
 					player.Job = JobType.Ninja;
 				}
 
-				await this.service.SaveAsync(player, filePath);
+				// [同期版]
+				this.service.Save(player, filePath);
+				// [非同期版]
+				//await this.service.SaveAsync(player, filePath);
 			}
 		}
 
@@ -87,7 +90,10 @@ namespace WinFormSample.Presentation {
 			var dialog = new OpenFileDialog();
 			if (dialog.ShowDialog() == DialogResult.OK) {
 				// ファイル読込
-				var player = await this.service.LoadAsync(dialog.FileName);
+				// [同期版]
+				var player = this.service.Load(dialog.FileName);
+				// [非同期版]
+				//var player = await this.service.LoadAsync(dialog.FileName);
 
 				// 読み込めた場合は画面に表示
 				if (player != null) {

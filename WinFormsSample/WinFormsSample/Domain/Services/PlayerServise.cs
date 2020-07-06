@@ -11,6 +11,15 @@ namespace WinFormSample.Domain.Services {
 
 		#region public methods
 		/// <summary>
+		/// プレイヤー情報をXMLファイルから読み込む。
+		/// </summary>
+		/// <param name="filePath">ファイルパス</param>
+		/// <returns>読み込んだデータを格納したオブジェクト</returns>
+		public PlayerParameter? Load(string filePath) {
+			return XmlIO.ReadPlayerParameter(filePath);
+		}
+
+		/// <summary>
 		/// プレイヤー情報をファイルから読み込む。
 		/// </summary>
 		/// <param name="filePath">ファイルパス</param>
@@ -29,6 +38,21 @@ namespace WinFormSample.Domain.Services {
 		/// </summary>
 		/// <param name="value">保存する情報</param>
 		/// <param name="filePath">保存先ファイルパス</param>
+		/// <remarks>同期版</remarks>
+		public void Save(PlayerParameter value, string filePath) {
+			// XML出力
+			XmlIO.WritePlayerParameter(value, this.AddExtension(filePath, XmlIO.Extension));
+
+			// JSON出力
+			//var jsonTask = JsonIO.WriteAsync(value, this.AddExtension(filePath, JsonIO.Extension));
+		}
+
+		/// <summary>
+		/// プレイヤー情報をファイルに保存する。
+		/// </summary>
+		/// <param name="value">保存する情報</param>
+		/// <param name="filePath">保存先ファイルパス</param>
+		/// <remarks>非同期版</remarks>
 		public async Task SaveAsync(PlayerParameter value, string filePath) {
 			// XML出力
 			var xmlTask = XmlIO.WriteAsync(value, this.AddExtension(filePath, XmlIO.Extension));
