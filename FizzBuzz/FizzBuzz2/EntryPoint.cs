@@ -4,22 +4,23 @@ using System.Linq;
 namespace FizzBuzz2 {
 	public class EntryPoint {
 
-		// タプル
+		// ValueTuple
 		// readonly
-		private static readonly Tuple<int, string>[] FizzBuzzRules = { Tuple.Create(3, "Fizz"), Tuple.Create(5, "Buzz") };
+		private static readonly (int index, string outputStr)[] FizzBuzzRules = { (3, "Fizz"), (5, "Buzz") };
 
 		public static void Main(string[] args) {
 			// LINQ
 			// ラムダ式
-			Enumerable.Range(1, 100).ToList().ForEach(i => {
-				Console.WriteLine(ToFizzBuzz(i));
-			});
+			Enumerable.Range(1, 100).ToList().ForEach(i =>
+				Console.WriteLine(ToFizzBuzz(i))
+			);
 		}
 
 		private static string ToFizzBuzz(int value) {
+			// 型推論
 			// LINQのクエリ式
 			var fizzBuzz = from x in FizzBuzzRules
-							let y = value % x.Item1 == 0 ? x.Item2 : string.Empty
+							let y = value % x.index == 0 ? x.outputStr : string.Empty
 							where !string.IsNullOrEmpty(y)
 							select y;
 

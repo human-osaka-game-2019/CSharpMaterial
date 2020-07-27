@@ -8,9 +8,9 @@ namespace FizzBuzz1 {
 		public static void Main(string[] args) {
 			// LINQ
 			// ラムダ式
-			Enumerable.Range(1, 100).ToList().ForEach(i => {
-				Console.WriteLine(CreateFizzBuzzString(i));
-			});
+			Enumerable.Range(1, 100).ToList().ForEach(i =>
+				Console.WriteLine(CreateFizzBuzzString(i))
+			);
 		}
 
 		private static string CreateFizzBuzzString(int value) {

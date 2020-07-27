@@ -6,12 +6,13 @@ namespace FizzBuzzRule4 {
 
 		public static void Main(string[] args) {
 			// LINQ
-			Enumerable.Range(1, 100)
-				.Select(x => {
-					var ret = (x % 3 == 0 ? "Fizz" : string.Empty) + (x % 5 == 0 ? "Buzz" : string.Empty);
-					if (string.IsNullOrEmpty(ret)) ret = x.ToString();
-					return ret;
-				}).ToList().ForEach(x => Console.WriteLine(x));
+			new string[100].Select((_, i) => {
+				// 型推論
+				var number = i + 1;
+				var ret = (number % 3 == 0 ? "Fizz" : string.Empty) + (number % 5 == 0 ? "Buzz" : string.Empty);
+				if (string.IsNullOrEmpty(ret)) ret = number.ToString();
+				return ret;
+			}).ToList().ForEach(x => Console.WriteLine(x));
 		}
 
 	}

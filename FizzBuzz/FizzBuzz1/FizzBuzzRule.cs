@@ -12,8 +12,8 @@ namespace FizzBuzz1 {
 			Buzz = 5
 		}
 
-		// プロパティ
-		public static  FizzBuzzType[] All => Enum.GetValues(typeof(FizzBuzzType)).OfType<FizzBuzzType>().ToArray();
+		// 自動プロパティ
+		public static FizzBuzzType[] All { get; } = Enum.GetValues(typeof(FizzBuzzType)).OfType<FizzBuzzType>().ToArray();
 
 		public static FizzBuzzType? Convert(int value) {
 			// Null許容値型

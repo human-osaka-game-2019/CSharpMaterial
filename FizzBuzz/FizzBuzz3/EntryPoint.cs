@@ -11,9 +11,11 @@ namespace FizzBuzz3 {
 		public static void Main(string[] args) {
 			// LINQ
 			Enumerable.Range(1, 100).ToList().ForEach(i => {
+				// 型推論
 				var outputStr = string.Empty;
 				// ref
 				Array.ForEach(rules, x => x.Judge(i, ref outputStr));
+
 				Console.WriteLine(outputStr);
 			});
 		}
