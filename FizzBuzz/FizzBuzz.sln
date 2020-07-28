@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz3", "FizzBuzz3\Fizz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz4", "FizzBuzz4\FizzBuzz4.csproj", "{A8D64808-988C-478F-A9A4-B6C0C216C735}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz5", "FizzBuzz5\FizzBuzz5.csproj", "{33CBF0AA-BA73-4A4A-BCE0-C4E9252C7855}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz5", "FizzBuzz5\FizzBuzz5.csproj", "{33CBF0AA-BA73-4A4A-BCE0-C4E9252C7855}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz6", "FizzBuzz6\FizzBuzz6.csproj", "{607503AC-7C79-4385-B963-392FB5070CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz7", "FizzBuzz7\FizzBuzz7.csproj", "{ACB17FB7-A33A-4DCF-B9A4-423EAAEA0659}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz8", "FizzBuzz8\FizzBuzz8.csproj", "{4751DD6C-DFEA-4213-A7EF-921528489923}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{33CBF0AA-BA73-4A4A-BCE0-C4E9252C7855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33CBF0AA-BA73-4A4A-BCE0-C4E9252C7855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33CBF0AA-BA73-4A4A-BCE0-C4E9252C7855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{607503AC-7C79-4385-B963-392FB5070CB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607503AC-7C79-4385-B963-392FB5070CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607503AC-7C79-4385-B963-392FB5070CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607503AC-7C79-4385-B963-392FB5070CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACB17FB7-A33A-4DCF-B9A4-423EAAEA0659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACB17FB7-A33A-4DCF-B9A4-423EAAEA0659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACB17FB7-A33A-4DCF-B9A4-423EAAEA0659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACB17FB7-A33A-4DCF-B9A4-423EAAEA0659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4751DD6C-DFEA-4213-A7EF-921528489923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4751DD6C-DFEA-4213-A7EF-921528489923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4751DD6C-DFEA-4213-A7EF-921528489923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4751DD6C-DFEA-4213-A7EF-921528489923}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
