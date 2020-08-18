@@ -7,11 +7,11 @@ using WinFormSample.Domain.DomainObjects.Entities;
 using WinFormSample.Infrastructure;
 using WinFormSample.Infrastructures.Database;
 
-namespace WinFormSample.Domain.Services {
+namespace WinFormSample.Application {
 	/// <summary>
 	/// 敵画面のビジネスロジッククラス。
 	/// </summary>
-	public class EnemyService {
+	public class EnemyAppService {
 
 		#region field members
 		/// <summary>

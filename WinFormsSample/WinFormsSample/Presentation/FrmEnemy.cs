@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using WinFormSample.Application;
 using WinFormSample.Domain.DomainObjects.Entities;
-using WinFormSample.Domain.Services;
 
 namespace WinFormSample.Presentation {
 	/// <summary>
@@ -16,7 +16,7 @@ namespace WinFormSample.Presentation {
 		/// <summary>
 		/// ビジネスロジッククラス。
 		/// </summary>
-		private EnemyService service = new EnemyService();
+		private EnemyAppService appService = new EnemyAppService();
 
 		/// <summary>
 		/// 画面に表示する敵情報リスト。
@@ -49,7 +49,7 @@ namespace WinFormSample.Presentation {
 		private async void FrmEnemy_Load(object sender, EventArgs e) {
 			try {
 				// DBからデータを取得して表示
-				this.enemyDataTable = await this.service.LoadAsync();
+				this.enemyDataTable = await this.appService.LoadAsync();
 				this.dgEnemies.DataSource = this.enemyDataTable;
 
 				// DBにデータが存在しない場合のみサンプル表示ボタンを活性化
@@ -67,7 +67,7 @@ namespace WinFormSample.Presentation {
 		/// <param name="e">イベントパラメータ</param>
 		private void BtnDisplaySample_Click(object sender, EventArgs e) {
 			// サンプルデータを生成して表示
-			this.enemyParameters = new BindingList<EnemyParameter>(this.service.CreateSampleData());
+			this.enemyParameters = new BindingList<EnemyParameter>(this.appService.CreateSampleData());
 			this.dgEnemies.DataSource = this.enemyParameters;
 		}
 
@@ -81,10 +81,10 @@ namespace WinFormSample.Presentation {
 			if (dialog.ShowDialog() == DialogResult.OK) {
 				switch (this.dgEnemies.DataSource) {
 					case IEnumerable<EnemyParameter> x:
-						await this.service.ExportAsync(x, dialog.FileName);
+						await this.appService.ExportAsync(x, dialog.FileName);
 						break;
 					case DataTable x:
-						await this.service.ExportAsync(x, dialog.FileName);
+						await this.appService.ExportAsync(x, dialog.FileName);
 						break;
 				}
 			}
@@ -99,10 +99,10 @@ namespace WinFormSample.Presentation {
 			var isSuccess = false;
 			switch (this.dgEnemies.DataSource) {
 				case IEnumerable<EnemyParameter> x:
-					isSuccess = await this.service.SaveAsync(x);
+					isSuccess = await this.appService.SaveAsync(x);
 					break;
 				case DataTable x:
-					isSuccess = await this.service.SaveAsync(x);
+					isSuccess = await this.appService.SaveAsync(x);
 					break;
 			}
 

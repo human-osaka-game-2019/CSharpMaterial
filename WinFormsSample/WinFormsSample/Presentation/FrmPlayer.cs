@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using WinFormSample.Application;
 using WinFormSample.Domain.DomainObjects.Entities;
-using WinFormSample.Domain.Services;
 using static WinFormSample.Domain.DomainObjects.Entities.PlayerParameter;
 
 namespace WinFormSample.Presentation {
@@ -15,7 +15,7 @@ namespace WinFormSample.Presentation {
 		/// <summary>
 		/// ビジネスロジッククラス。
 		/// </summary>
-		private PlayerService service = new PlayerService();
+		private PlayerAppService appService = new PlayerAppService();
 		#endregion
 
 		#region constructors
@@ -74,7 +74,7 @@ namespace WinFormSample.Presentation {
 				}
 
 				// [同期版]
-				this.service.Save(player, filePath);
+				this.appService.Save(player, filePath);
 				// [非同期版]
 				//await this.service.SaveAsync(player, filePath);
 			}
@@ -91,7 +91,7 @@ namespace WinFormSample.Presentation {
 			if (dialog.ShowDialog() == DialogResult.OK) {
 				// ファイル読込
 				// [同期版]
-				var player = this.service.Load(dialog.FileName);
+				var player = this.appService.Load(dialog.FileName);
 				// [非同期版]
 				//var player = await this.service.LoadAsync(dialog.FileName);
 
